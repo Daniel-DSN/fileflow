@@ -1,0 +1,48 @@
+# FileFlow demo — run 2: apply the plan (safety first, then --yes)
+$ python3 -m fileflow.cli apply demo/demo_workspace
+[error] refusing to modify files without confirmation
+[hint] re-run with --yes: python -m fileflow.cli apply demo/demo_workspace --yes --rename
+exit=1
+
+$ python3 -m fileflow.cli apply demo/demo_workspace --yes --rename
+FileFlow 1.0.0 — applying plan to demo/demo_workspace
+  by=type rename=yes dest=_organized
+[move] deep/nested/folder/readme.md -> _organized/docs/001_readme.md
+[move] downloads/backup_archive.zip -> _organized/archives/001_backup_archive.zip
+[move] downloads/banner.png -> _organized/images/001_banner.png
+[move] downloads/installer_setup.exe -> _organized/other/001_installer_setup.exe
+[move] downloads/song.mp3 -> _organized/audio/001_song.mp3
+[move] inbox/Quarterly Report.PDF -> _organized/docs/002_quarterly_report.pdf
+[move] inbox/invoice_2024.csv -> _organized/data/001_invoice_2024.csv
+[move] inbox/notes.txt -> _organized/docs/003_notes.txt
+[move] media/IMG_0001.jpg -> _organized/images/002_img_0001.jpg
+[skip] media/banner.png (duplicate of downloads/banner.png)
+[move] media/thumbnails/thumb_a.png -> _organized/images/003_thumb_a.png
+[move] projects/etl/clean_data.py -> _organized/code/001_clean_data.py
+[move] projects/etl/export_data.csv -> _organized/data/002_export_data.csv
+[move] shared/contract signed.docx -> _organized/docs/004_contract_signed.docx
+[skip] shared/contract.docx (duplicate of shared/contract signed.docx)
+[move] shared/empty.dat -> _organized/other/002_empty.dat
+[stats] 14 moved · 2 duplicates skipped · 7 categories created · 8 empty dirs pruned
+[ok] organized → /home/daniel/Projetos/freela-usd/portfolio/fileflow/demo/demo_workspace/_organized
+exit=0
+
+$ find demo/demo_workspace -type f | sort   # AFTER
+demo/demo_workspace/media/banner.png
+demo/demo_workspace/_organized/archives/001_backup_archive.zip
+demo/demo_workspace/_organized/audio/001_song.mp3
+demo/demo_workspace/_organized/code/001_clean_data.py
+demo/demo_workspace/_organized/data/001_invoice_2024.csv
+demo/demo_workspace/_organized/data/002_export_data.csv
+demo/demo_workspace/_organized/docs/001_readme.md
+demo/demo_workspace/_organized/docs/002_quarterly_report.pdf
+demo/demo_workspace/_organized/docs/003_notes.txt
+demo/demo_workspace/_organized/docs/004_contract_signed.docx
+demo/demo_workspace/_organized/images/001_banner.png
+demo/demo_workspace/_organized/images/002_img_0001.jpg
+demo/demo_workspace/_organized/images/003_thumb_a.png
+demo/demo_workspace/_organized/other/001_installer_setup.exe
+demo/demo_workspace/_organized/other/002_empty.dat
+demo/demo_workspace/shared/contract.docx
+
+$ find demo/demo_workspace -type d -empty   # leftover empty dirs (none)

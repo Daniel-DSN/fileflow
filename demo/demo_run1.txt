@@ -1,0 +1,47 @@
+# FileFlow demo — run 1: create demo workspace, list it, dry-run plan
+$ python3 -m fileflow.cli init-demo demo/demo_workspace
+FileFlow 1.0.0 — created demo workspace at /home/daniel/Projetos/freela-usd/portfolio/fileflow/demo/demo_workspace
+[stats] 16 files · 635 bytes · 7 categories
+[ok] dry run: python -m fileflow.cli plan demo/demo_workspace --rename
+
+$ find demo/demo_workspace -type f | sort   # BEFORE
+demo/demo_workspace/deep/nested/folder/readme.md
+demo/demo_workspace/downloads/backup_archive.zip
+demo/demo_workspace/downloads/banner.png
+demo/demo_workspace/downloads/installer_setup.exe
+demo/demo_workspace/downloads/song.mp3
+demo/demo_workspace/inbox/invoice_2024.csv
+demo/demo_workspace/inbox/notes.txt
+demo/demo_workspace/inbox/Quarterly Report.PDF
+demo/demo_workspace/media/banner.png
+demo/demo_workspace/media/IMG_0001.jpg
+demo/demo_workspace/media/thumbnails/thumb_a.png
+demo/demo_workspace/projects/etl/clean_data.py
+demo/demo_workspace/projects/etl/export_data.csv
+demo/demo_workspace/shared/contract.docx
+demo/demo_workspace/shared/contract signed.docx
+demo/demo_workspace/shared/empty.dat
+
+$ python3 -m fileflow.cli plan demo/demo_workspace --rename
+FileFlow 1.0.0 — plan for demo/demo_workspace
+  by=type rename=yes dest=_organized
+ACTION          SRC                            DEST
+--------------  -----------------------------  ------------------------------------------
+move            deep/nested/folder/readme.md   _organized/docs/001_readme.md
+move            downloads/backup_archive.zip   _organized/archives/001_backup_archive.zip
+move            downloads/banner.png           _organized/images/001_banner.png
+move            downloads/installer_setup.exe  _organized/other/001_installer_setup.exe
+move            downloads/song.mp3             _organized/audio/001_song.mp3
+move            inbox/Quarterly Report.PDF     _organized/docs/002_quarterly_report.pdf
+move            inbox/invoice_2024.csv         _organized/data/001_invoice_2024.csv
+move            inbox/notes.txt                _organized/docs/003_notes.txt
+move            media/IMG_0001.jpg             _organized/images/002_img_0001.jpg
+skip_duplicate  media/banner.png               -
+move            media/thumbnails/thumb_a.png   _organized/images/003_thumb_a.png
+move            projects/etl/clean_data.py     _organized/code/001_clean_data.py
+move            projects/etl/export_data.csv   _organized/data/002_export_data.csv
+move            shared/contract signed.docx    _organized/docs/004_contract_signed.docx
+skip_duplicate  shared/contract.docx           -
+move            shared/empty.dat               _organized/other/002_empty.dat
+[stats] 16 files · 14 move · 2 skip_duplicate · 7 categories
+[dry-run] nothing was written — run `apply demo/demo_workspace --yes` to execute

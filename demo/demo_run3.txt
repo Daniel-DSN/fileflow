@@ -1,0 +1,25 @@
+# FileFlow demo — run 3: CSV report after organizing
+$ python3 -m fileflow.cli report demo/demo_workspace -o demo/report.csv
+FileFlow 1.0.0 — report for demo/demo_workspace
+[stats] 16 files · 7 categories · 2 duplicates
+[ok] 16 rows → demo/report.csv
+exit=0
+
+$ cat demo/report.csv
+file,category,size_bytes,sha256_8,action
+_organized/archives/001_backup_archive.zip,archives,26,ef9128a5,organized
+_organized/audio/001_song.mp3,audio,29,a07e65dd,organized
+_organized/code/001_clean_data.py,code,79,7173e166,organized
+_organized/data/001_invoice_2024.csv,data,67,23982568,organized
+_organized/data/002_export_data.csv,data,23,2ede6e2d,organized
+_organized/docs/001_readme.md,docs,50,a518db06,organized
+_organized/docs/002_quarterly_report.pdf,docs,43,6a2bf932,organized
+_organized/docs/003_notes.txt,docs,48,5c4ee550,organized
+_organized/docs/004_contract_signed.docx,docs,39,994c572a,organized
+_organized/images/001_banner.png,images,39,ac9e696e,organized
+_organized/images/002_img_0001.jpg,images,45,9b2bc96c,organized
+_organized/images/003_thumb_a.png,images,25,93941d7b,organized
+_organized/other/001_installer_setup.exe,other,44,bb2f0046,organized
+_organized/other/002_empty.dat,other,0,e3b0c442,organized
+media/banner.png,images,39,ac9e696e,skip_duplicate
+shared/contract.docx,docs,39,994c572a,skip_duplicate

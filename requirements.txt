@@ -1,0 +1,3 @@
+# FileFlow runs on the Python 3.10+ standard library only — nothing to install.
+# Test dependency (already available in the environment):
+pytest>=7.4
