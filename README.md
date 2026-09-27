@@ -1,4 +1,5 @@
 # FileFlow
+[![tests](https://github.com/Daniel-DSN/fileflow/actions/workflows/tests.yml/badge.svg)](https://github.com/Daniel-DSN/fileflow/actions)
 
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org)
 [![Tests](https://img.shields.io/badge/tests-38%20passed-brightgreen)](#testing)
